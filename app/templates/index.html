@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Number Guessing Game</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .game-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            width: 320px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .instructions {
+            margin-bottom: 20px;
+        }
+
+        .chances {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            width: 150px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 18px;
+            margin: 8px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .guess-button {
+            background-color: #e9e9e9;
+        }
+
+        .new-game-button {
+            background-color: #e9e9e9;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game-container">
+
+        <h1>🎯 Number Guessing Game</h1>
+
+        <p class="instructions">
+            Guess a number between <strong>1 and 10</strong>
+        </p>
+
+        <p class="chances">
+            Chances remaining: {{ session["chances"] }}
+        </p>
+
+        <!-- Guess form -->
+        <form method="POST" action="/">
+            <input
+                type="number"
+                name="guess"
+                min="1"
+                max="10"
+                placeholder="Enter your guess"
+                required
+            >
+
+            <button type="submit" class="guess-button">
+                Guess
+            </button>
+        </form>
+
+        <!-- Game message -->
+        <p class="message">
+            {{ session["message"] }}
+        </p>
+
+        <!-- New Game -->
+        <form method="GET" action="/new-game">
+            <button type="submit" class="new-game-button">
+                New Game
+            </button>
+        </form>
+
+    </div>
+
+</body>
+</html>
